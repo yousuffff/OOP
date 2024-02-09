@@ -1,71 +1,113 @@
-'use strict';
-// constructor function
-const Person = function (firstName, lastName, birthYear) {
-  //instance variables
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.birthYear = birthYear;
-}
-const yousuf = new Person('Mohd', 'Yousuf', 1999);
-console.log(yousuf);
-const uzair = new Person('Uzair', 'Ahmad', 1999);
-console.log(uzair);
+// 'use strict';
+// // constructor function
+// const Person = function (firstName, lastName, birthYear) {
+//   //instance variables
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+//   this.birthYear = birthYear;
+// }
+// const yousuf = new Person('Mohd', 'Yousuf', 1999);
+// console.log(yousuf);
+// const uzair = new Person('Uzair', 'Ahmad', 1999);
+// console.log(uzair);
 
-// step of construction function
-//1. New object {} is created
-//2. function is called, this = {}
-//3. {} linked to protype
-//4. function automatically return {}.
+// // step of construction function
+// //1. New object {} is created
+// //2. function is called, this = {}
+// //3. {} linked to protype
+// //4. function automatically return {}.
 
-// Prototype
-Person.prototype.calC = function () {
-  console.log(2024 - this.birthYear);
-}
-yousuf.calC();
+// // Prototype
+// Person.prototype.calC = function () {
+//   console.log(2024 - this.birthYear);
+// }
+// yousuf.calC();
 
-Person.prototype.species = 'HOMO SAPAINS';
+// Person.prototype.species = 'HOMO SAPAINS';
 
-console.log(yousuf.__proto__);
-console.log(yousuf.__proto__ === Person.prototype);
+// console.log(yousuf.__proto__);
+// console.log(yousuf.__proto__ === Person.prototype);
 
-//Species is not directly connected to yousuf but its a part or person prototype so its present in yousuf object
+// //Species is not directly connected to yousuf but its a part or person prototype so its present in yousuf object
 
-///////////////////////////////////////
-// Coding Challenge #1
+// ///////////////////////////////////////
+// // Coding Challenge #1
 
-/* 
-1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
-2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
-3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
-4. Create 2 car objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them.
+// /* 
+// 1. Use a constructor function to implement a Car. A car has a make and a speed property. The speed property is the current speed of the car in km/h;
+// 2. Implement an 'accelerate' method that will increase the car's speed by 10, and log the new speed to the console;
+// 3. Implement a 'brake' method that will decrease the car's speed by 5, and log the new speed to the console;
+// 4. Create 2 car objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them.
 
-DATA CAR 1: 'BMW' going at 120 km/h
-DATA CAR 2: 'Mercedes' going at 95 km/h
+// DATA CAR 1: 'BMW' going at 120 km/h
+// DATA CAR 2: 'Mercedes' going at 95 km/h
 
-GOOD LUCK 😀
-*/
+// GOOD LUCK 😀
+// */
 
-const CarDis = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-}
-CarDis.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`new speed = ${this.speed}`); // we also can access this.make property here
-}
-CarDis.prototype.brake = function () {
-  this.speed -= 5;
-  console.log(`new speed = ${this.speed}`);
-}
+// const CarDis = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// }
+// CarDis.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`new speed = ${this.speed}`); // we also can access this.make property here
+// }
+// CarDis.prototype.brake = function () {
+//   this.speed -= 5;
+//   console.log(`new speed = ${this.speed}`);
+// }
 
-const car1 = new CarDis('BMW', 120);
-const car2 = new CarDis('Merecedes', 95);
-console.log(car1)
-car1.accelerate();
-car1.accelerate();
-car1.brake();
-car1.accelerate();
+// const car1 = new CarDis('BMW', 120);
+// const car2 = new CarDis('Merecedes', 95);
+// console.log(car1)
+// car1.accelerate();
+// car1.accelerate();
+// car1.brake();
+// car1.accelerate();
 
-console.log(car2)
-car2.accelerate();
-car2.brake();
+// console.log(car2)
+// car2.accelerate();
+// car2.brake();
+
+// // construction function
+
+// // class declaration
+// class Personal {
+//   constructor(fullName, birthDate) {
+//     this.fullName = fullName;
+//     this.birthDate = birthDate;
+//   }
+//   // methoid willl be added to .prototype propperty
+
+//   calCage() {
+//     console.log(2024 - this.birthDate)
+
+//   }
+//   // getter and setter methohd
+//   set fullName(name) {
+//     if (name.includes(' ')) this._fullName = name;
+//   }
+//   get fullName() {
+//     return this._fullName;
+//   }
+//   /////////Static Methods 
+//   // static method only work with constructor like Number , Array . from method in Array.from() is static method And in Number.praseFloat method is static method.
+//   static hey() {
+//     console.log('Hey Buddy ')
+//     console.log(this);
+//   }
+// }
+
+// const amir = new Personal('Yousuf mohd', 1999);
+// amir.calCage()
+// Personal.hey()
+
+// // 1. classes are not hoisted.
+// // 2 . classes are also first class citizen like function
+// // 3. classes are excuted in strict mode
+
+
+
+
+// // console.log(Personal.prototype);
