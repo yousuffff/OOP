@@ -247,31 +247,81 @@ GOOD LUCK 😀
 // tesla.accelerate();
 // console.dir(tesla)
 
-class PersonCl {
-  constructor(fullname, email) {
-    this.fullname = fullname;
-    this.email = email;
-  }
-}
-class StudentCl extends PersonCl {
-  constructor(fullname, email, password) {
-    super(fullname, email)
-    // this.password = password
+// class PersonCl {
+//   constructor(fullname, email) {
+//     this.fullname = fullname;
+//     this.email = email;
+//   }
+// }
+// class StudentCl extends PersonCl {
+//   constructor(fullname, email, password) {
+//     super(fullname, email)
+//     // this.password = password
+
+//   }
+//   set passwordChk(password) {
+//     if (!password.includes(' ')) this._password = password;
+//     else alert('Please enter 8 characters in password')
+//   }
+//   get passwordChk() {
+//     return this._password;
+//   }
+//   introduce() {
+//     console.log(`Hey my name is ${this.fullname} and my email is ${this.email}`)
+//   }
+// }
+
+// const nisha = new StudentCl('Nisha', 'nisha43201@gmail.com')
+// // nisha.introduce();
+// console.dir(StudentCl.__proto__ === PersonCl.__proto__)
+
+// practice encapsulation
+// public field
+// private field
+// public method
+// private method 
+class Account {
+  // private fields
+  locale = navigator.language
+  #pin;
+  #movement = [];
+  constructor(name, currency, pin) {
+    // public field ( instanse)
+    this.name = name;
+    this.currency = currency;
+    this.#pin = pin;
 
   }
-  // set passwordChk(password) {
-  //   if (!password.includes(' ')) this._password = password;
-  //   else alert('Please enter 8 characters in password')
-  // }
-  // get passwordChk() {
-  //   return this._password;
-  // }
-  // introduce() {
-  //   console.log(`Hey my name is ${this.fullname} and my email is ${this.email}`)
-  // }
+  getmovement(val) {
+    return this.#movement;
+  }
+  deposit(val) {
+    this.#movement.push(val);
+  }
+  withdrawal(val) {
+    this.deposit(-val);
+  }
+  // _approveLoan(val) { // convention to tell other devloper that this property dont use outside
+  // private method
+  #approveLoan(val) {
+    return true;
+  }
+  // publice method
+  requestLoan(val) {
+    // if (this._approveLoan(val)) { 
+    if (this.#approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan Approved');
+    }
+  }
 }
-
-const nisha = new StudentCl('Nisha', 'nisha43201@gmail.com')
-// nisha.introduce();
-console.dir(StudentCl.__proto__ === PersonCl.__proto__)
-
+const yousuf = new Account('Yousuf', 'INR', 1111, [])
+console.log(yousuf)
+yousuf.deposit(1000)
+yousuf.withdrawal(800)
+yousuf.requestLoan(1000)
+console.log(yousuf.getmovement());
+// console.log(yousuf);
+// console.log(yousuf.#pin);
+// console.log(yousuf.#movement);
+// console.log(yousuf.#approveLoan);
