@@ -280,48 +280,115 @@ GOOD LUCK 😀
 // private field
 // public method
 // private method 
-class Account {
-  // private fields
-  locale = navigator.language
-  #pin;
-  #movement = [];
-  constructor(name, currency, pin) {
-    // public field ( instanse)
-    this.name = name;
-    this.currency = currency;
-    this.#pin = pin;
+// class Account {
+//   // private fields
+//   locale = navigator.language
+//   #pin;
+//   #movement = [];
+//   constructor(name, currency, pin) {
+//     // public field ( instanse)
+//     this.name = name;
+//     this.currency = currency;
+//     this.#pin = pin;
 
+//   }
+//   getmovement(val) {
+//     return this.#movement;
+//   }
+//   deposit(val) {
+//     this.#movement.push(val);
+//   }
+//   withdrawal(val) {
+//     this.deposit(-val);
+//   }
+//   // _approveLoan(val) { // convention to tell other devloper that this property dont use outside
+//   // private method
+//   #approveLoan(val) {
+//     return true;
+//   }
+//   // publice method
+//   requestLoan(val) {
+//     // if (this._approveLoan(val)) { 
+//     if (this.#approveLoan(val)) {
+//       this.deposit(val);
+//       console.log('Loan Approved');
+//     }
+//   }
+// }
+// const yousuf = new Account('Yousuf', 'INR', 1111, [])
+// console.log(yousuf)
+// yousuf.deposit(1000)
+// yousuf.withdrawal(800)
+// yousuf.requestLoan(1000)
+// console.log(yousuf.getmovement());
+// // console.log(yousuf);
+// // console.log(yousuf.#pin);
+// // console.log(yousuf.#movement);
+// // console.log(yousuf.#approveLoan);
+
+// Coding Challenge #4
+
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+GOOD LUCK 😀
+*/
+
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
   }
-  getmovement(val) {
-    return this.#movement;
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
   }
-  deposit(val) {
-    this.#movement.push(val);
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
   }
-  withdrawal(val) {
-    this.deposit(-val);
+
+  get speedUS() {
+    return this.speed / 1.6;
   }
-  // _approveLoan(val) { // convention to tell other devloper that this property dont use outside
-  // private method
-  #approveLoan(val) {
-    return true;
-  }
-  // publice method
-  requestLoan(val) {
-    // if (this._approveLoan(val)) { 
-    if (this.#approveLoan(val)) {
-      this.deposit(val);
-      console.log('Loan Approved');
-    }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
   }
 }
-const yousuf = new Account('Yousuf', 'INR', 1111, [])
-console.log(yousuf)
-yousuf.deposit(1000)
-yousuf.withdrawal(800)
-yousuf.requestLoan(1000)
-console.log(yousuf.getmovement());
-// console.log(yousuf);
-// console.log(yousuf.#pin);
-// console.log(yousuf.#movement);
-// console.log(yousuf.#approveLoan);
+class EV extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed)
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+  setchargeBattery() {
+    return this.#charge;
+
+  }
+  accelerate() {
+    this.speed += 20;
+    this.#charge -= 1;
+    // console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.#charge}%`);
+    return this;
+  }
+}
+const car1 = new EV('Rivian', 120, 23)
+console.log(car1);
+// console.log(car1.#charge);
+car1.chargeBattery(90).accelerate(130).accelerate(120).chargeBattery(90).accelerate(120)
+console.log(car1);
